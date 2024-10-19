@@ -185,21 +185,32 @@ const CurrentDayTab: React.FC = () => {
   }, []);
 
   return (
-    <div className="text-center space-y-6">
-      <div className="bg-white rounded-lg shadow-lg p-8 inline-block">
-        <p className="text-4xl font-bold mb-6">
-          {format(currentDay, "EEEE, MMMM d, yyyy")}
+    <div className="text-center space-y-4">
+      <div className="bg-white rounded-lg shadow-lg p-6 relative">
+        <p className="text-5xl font-bold">{format(currentDay, "EEEE")}</p>
+        <p className="text-xl font-semibold absolute top-2 right-4">
+          {format(currentDay, "MMMM d, yyyy")}
         </p>
-        <p className="text-6xl font-bold text-blue-500 mb-8">Day {dayNumber}</p>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
           <thead>
-            <tr className="bg-blue-500 text-white">
-              <th className="p-3 text-left"></th>
+            <tr>
+              <th className="p-2 text-left bg-gray-100"></th>
               {[1, 2, 3, 4, 5, 6].map((day) => (
-                <th key={day} className="p-3 text-center">
+                <th
+                  key={day}
+                  className={`p-2 text-center ${
+                    day === dayNumber
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-100 text-gray-700"
+                  } ${
+                    day === dayNumber
+                      ? "border-x-2 border-t-2 border-blue-500"
+                      : ""
+                  }`}
+                >
                   Day {day}
                 </th>
               ))}
@@ -209,7 +220,7 @@ const CurrentDayTab: React.FC = () => {
             {PERIODS.map((period, index) => (
               <tr key={period}>
                 <td
-                  className={`p-3 border-t ${
+                  className={`p-2 ${
                     GRAY_PERIODS.includes(period) ? "bg-gray-200" : ""
                   }`}
                 >
@@ -223,8 +234,14 @@ const CurrentDayTab: React.FC = () => {
                   return (
                     <td
                       key={day}
-                      className={`p-3 border-t text-center ${bgColor} ${
+                      className={`p-2 text-center ${bgColor} ${
                         GRAY_PERIODS.includes(period) ? "bg-gray-200" : ""
+                      } ${
+                        day === dayNumber
+                          ? `border-x-2 border-blue-500 ${
+                              index === PERIODS.length - 1 ? "border-b-2" : ""
+                            }`
+                          : ""
                       }`}
                     >
                       {subject}
