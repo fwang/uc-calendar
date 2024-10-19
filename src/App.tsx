@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { CalendarDays, CalendarIcon } from 'lucide-react';
-import CalendarTab from './components/CalendarTab';
-import CurrentDayTab from './components/CurrentDayTab';
+import React, { useState } from "react";
+import { Sun, CalendarIcon } from "lucide-react";
+import CalendarTab from "./components/CalendarTab";
+import CurrentDayTab from "./components/CurrentDayTab";
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'month' | 'currentDay'>('month');
+  const [activeTab, setActiveTab] = useState<"today" | "month">("today");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-4">
@@ -12,23 +12,27 @@ const App: React.FC = () => {
         <div className="flex border-b">
           <button
             className={`flex-1 py-4 px-6 text-lg font-semibold ${
-              activeTab === 'month' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700'
+              activeTab === "today"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-100 text-gray-700"
             }`}
-            onClick={() => setActiveTab('month')}
+            onClick={() => setActiveTab("today")}
           >
-            <CalendarIcon className="inline-block mr-2" /> Month
+            <Sun className="inline-block mr-2" /> Today
           </button>
           <button
             className={`flex-1 py-4 px-6 text-lg font-semibold ${
-              activeTab === 'currentDay' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700'
+              activeTab === "month"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-100 text-gray-700"
             }`}
-            onClick={() => setActiveTab('currentDay')}
+            onClick={() => setActiveTab("month")}
           >
-            <CalendarDays className="inline-block mr-2" /> Current Day
+            <CalendarIcon className="inline-block mr-2" /> Month
           </button>
         </div>
         <div className="p-6">
-          {activeTab === 'month' ? <CalendarTab /> : <CurrentDayTab />}
+          {activeTab === "today" ? <CurrentDayTab /> : <CalendarTab />}
         </div>
       </div>
     </div>
