@@ -56,7 +56,7 @@ const CurrentDayTab: React.FC = () => {
   const [dayNumber, setDayNumber] = useState<number | null>(null);
 
   const params = new URLSearchParams(window.location.search);
-  const name = (params.get("name") ?? "zee").toLowerCase() as "zee" | "starr";
+  const name = (params.get("name") ?? "") as "zee" | "starr";
   const PERIODS = {
     zee: [
       "8:20-9:00",

@@ -6,12 +6,6 @@ import CurrentDayTab from "./components/CurrentDayTab";
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"today" | "month">("today");
 
-  // Extract 'name' from query string and set it as the document title
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    document.title = params.get("name") ?? "";
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-4">
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">

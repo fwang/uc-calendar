@@ -1,10 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      id="apple-touch-icon"
+      rel="apple-touch-icon"
+      href="/images/path-to-your-icon.png"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title id="title">Vite + React + TS</title>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name") ?? "";
+      document.getElementById("title").innerText =
+        name[0].toUpperCase() + name.slice(1);
+      document.getElementById("apple-touch-icon").href = `/images/${name}.jpeg`;
+    </script>
   </head>
   <body>
     <div id="root"></div>
