@@ -6,7 +6,7 @@
     <link
       id="apple-touch-icon"
       rel="apple-touch-icon"
-      href="/images/path-to-your-icon.png"
+      href="/public/zee.jpeg"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -18,7 +18,7 @@
       const name = params.get("name") ?? "";
       document.getElementById("title").innerText =
         name[0].toUpperCase() + name.slice(1);
-      document.getElementById("apple-touch-icon").href = `/images/${name}.jpeg`;
+      document.getElementById("apple-touch-icon").href = `/public/${name}.jpeg`;
     </script>
   </head>
   <body>
