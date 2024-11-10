@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sun, CalendarIcon } from "lucide-react";
 import CalendarTab from "./components/CalendarTab";
 import CurrentDayTab from "./components/CurrentDayTab";
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"today" | "month">("today");
+
+  // Extract 'name' from query string and set it as the document title
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    document.title = params.get("name") ?? "";
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-4">
